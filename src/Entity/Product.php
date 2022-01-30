@@ -62,6 +62,24 @@ class Product
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $department;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Manufacturer", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    public $manufacturer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -173,5 +191,53 @@ class Product
         $this->description = $description;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDepartment()
+    {
+        return $this->department;
+    }
+
+    /**
+     * @param mixed $department
+     */
+    public function setDepartment($department): void
+    {
+        $this->department = $department;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getManufacturer()
+    {
+        return $this->manufacturer;
+    }
+
+    /**
+     * @param mixed $manufacturer
+     */
+    public function setManufacturer($manufacturer): void
+    {
+        $this->manufacturer = $manufacturer;
     }
 }
