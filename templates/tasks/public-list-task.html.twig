@@ -1,0 +1,14 @@
+<div class="media text-muted pt-3">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <span class="d-block">
+                <strong class="text-gray-dark">Task#{{param.taskNumber}}</strong>
+                <br><strong class="text-gray-dark">{{param.taskTitle}}</strong>
+                <br><small> {{ param.time|date("d/m/Y") }} </small>
+        </span>
+        <span class="d-block" style="padding-left:1em">
+            <br>{{ param.text}}
+        </span>
+        <span class="d-block text-right mt-3">
+        </span>
+    </p>
+</div>

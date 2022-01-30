@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('tasks/row-single-task.html.twig', { 'param': param, 'first_name': first_name, 'last_name': last_name }) }}
+{% endblock %}
