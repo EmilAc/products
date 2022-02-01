@@ -26,7 +26,7 @@ class Manufacturer
     private $manufacturer_name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="manufacturer"
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="manufacturer")
      */
     public $products;
 
@@ -36,6 +36,11 @@ class Manufacturer
     public function __construct()
     {
         $this->products = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     /**
@@ -68,10 +73,5 @@ class Manufacturer
     public function setProducts(ArrayCollection $products): void
     {
         $this->products = $products;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 }
