@@ -44,6 +44,6 @@ final class Version20220130172417 extends AbstractMigration
 //        $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04AD12469DE2');
 //        $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04ADAE80F5DF');
 //        $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04ADA23B42D');
-        $this->addSql('DROP TABLE temp');
+//        $this->addSql('DROP TABLE temp');
     }
 }

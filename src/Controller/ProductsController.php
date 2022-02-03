@@ -190,6 +190,23 @@ class ProductsController extends AbstractController
     }
 
     /**
+     * @Route("/products-by-category-check", name="products-by-category-check")
+     */
+    public function productsByCategoryCheck(ProductRepository $productRepository): Response
+    {
+        $data = $productRepository->findAll();
+        if(!$data)
+        {
+            $message = "Insert data to database";
+            return $this->render('index.html.twig', [
+                'param' => $message
+            ]);
+        }
+
+        return new redirectResponse($this->router->generate("products-by-category"));
+    }
+
+    /**
      * @Route("/products-by-category", name="products-by-category")
      * @param Request $request
      * @return Response
@@ -200,13 +217,17 @@ class ProductsController extends AbstractController
         $form = $this->formFactory->create(ProductsByCategoryType::class, $category);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
+        if ($form->isSubmitted() && $form->isValid() && $form->get('search')->isClicked())
         {
             $entityObject = $form->get('categoryName')->getData();
             $categoryId = $entityObject->getId();
             return $this->render('products/products.html.twig',
                 ['params' => $this->productRepository->findBy(['category_id' => $categoryId], ['id' => 'ASC'])
                 ]);
+        }
+        if ($form->isSubmitted() && $form->isValid() && $form->get('generateCSV')->isClicked())
+        {
+        //generate csv file logic here
         }
 
         return $this->render('products/category-form.html.twig', [

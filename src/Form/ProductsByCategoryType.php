@@ -45,7 +45,12 @@ class ProductsByCategoryType extends AbstractType
                 'multiple' => false,
                 'placeholder' => 'Select category'
             ])
-            ->add('search', SubmitType::class);
+            ->add('search', SubmitType::class, [
+                'label' => 'Search'
+            ]);
+//            ->add('generateCSV', SubmitType::class, [
+//                'label' => 'Generate csv'
+//            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
