@@ -168,8 +168,6 @@ class ProductsController extends AbstractController
      */
     public function productEdit(Product $product, Request $request)
     {
-//        var_dump($product);die;
-
         $form = $this->formFactory->create(EditProductType::class, $product);
         $form->handleRequest($request);
 
@@ -214,12 +212,11 @@ class ProductsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            ($form->get);
-            var_dump($form);die;
+            $entityObject = $form->get('categoryName')->getData();
+            $categoryId = $entityObject->getId();
             return $this->render('products/products.html.twig',
-                ['params' => $this->productRepository->findBy([], ['id' => 'ASC'])
+                ['params' => $this->productRepository->findBy(['category_id' => $categoryId], ['id' => 'ASC'])
                 ]);
-//            $this->redirect('index');
         }
         return $this->render('products/category-form.html.twig', [
             'form' => $form->createView()
