@@ -1,4 +1,4 @@
------To Do App------
+-----Products App------
 
 This app was created in Linux Ubuntu 18.04 (VirtualBox) using Symfony 5.1.2 framework.
 
@@ -12,7 +12,7 @@ The following steps are provided for creating an environment for using this app:
 - check doctrine version - doctrine -V (install doctrine if needed)
 - set up .env file wth APP_DOMAIN=.. APP_BASE_URL=.. DATABASE_URL=.. and doctrine.yaml file
 - create new user with all premisions for new database
-- import todo_db.sql database
+- import products_db.sql database
 - check for node.js version - nodejs -v (install it if needed) 
 - install encore and webpack - composer require symfony/webpack-encore-bundle and yarn install
 - check for webpack.encore.webif exists and yarn.lock and package.json if share same webpack-encore version
@@ -29,8 +29,7 @@ in console: cd /var/www/html/project_name/ run:
 - ./node_modules/.bin/encore dev - buld front
 - php bin/console cache:clear - cache clear 
 
-for login:
-admin: username: admin_s pass: Nimda12#
-user 1: username: user_one pass:User_one12#
-user 2: username: user_two pass:User_two12#
+for uploading data in database:
+in - /var/www/html/products/
+run - php public/sqlScript.php
 
