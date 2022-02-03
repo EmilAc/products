@@ -59,6 +59,7 @@ class CategoriesController extends AbstractController
                 'param' => $message
             ]);
         }
+
         return new redirectResponse($this->router->generate("categories"));
     }
 
@@ -78,7 +79,7 @@ class CategoriesController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function productEdit(Category $category, Request $request)
+    public function productEdit(Category $category, Request $request): Response
     {
         $form = $this->formFactory->create(EditCategoryType::class, $category);
         $form->handleRequest($request);
@@ -92,6 +93,7 @@ class CategoriesController extends AbstractController
 
             $this->redirect('index');
         }
+
         return $this->render('products/product-edit.html.twig', [
             'form' => $form->createView()
         ]);

@@ -1,12 +1,8 @@
 <div class="media text-muted pt-3">
     <p class="media-body pb-3 mb-0 small lh-125">
         <span class="d-block">
-
-{#                    <a href="{{ path('product', {'id': param.id}) }}">#}
             <strong class="text-gray-dark">{{param.categoryName}}</strong>
-{#                                </a>#}
-
-                        <span style="float:right;">
+            <span style="float:right;">
                 <a href="{{ path('category-edit', {'id': param.id}) }}">
                     <button type="submit" class="btn-primary btn">Edit</button>
                 </a>

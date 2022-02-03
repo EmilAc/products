@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface as ObjectManager;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,9 +18,6 @@ class EditCategoryType extends AbstractType
     /** @var ObjectManager $em */
     private $em;
 
-    /** @var array $formCollection */
-    private $formCollection;
-
     /**
      * EditCategoryType constructor.
      * @param ObjectManager $em
@@ -32,18 +28,9 @@ class EditCategoryType extends AbstractType
         $this->setFormCollection();
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options):void
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-//            ->add('category', EntityType::class, [
-//                'class' => Category::class,
-//                'choices' => $this->formCollection['Category'],
-//                'choice_label' => 'categoryName',
-//                'required' => true,
-//                'expanded' => false,
-//                'multiple' => false,
-//                'placeholder' => 'Select Category'
-//            ])
             ->add('categoryName', TextType::class, array(
                 'invalid_message' => 'The entered upc is not valid',
                 'required' => true
@@ -52,7 +39,7 @@ class EditCategoryType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Category::class

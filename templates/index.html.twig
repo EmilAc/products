@@ -1,43 +1,10 @@
-{#<h1>Your lucky number is {{ number }}</h1>#}
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="media text-muted pt-3">
     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-{#        <span class="d-block">#}
-{#                <strong class="text-gray-dark">Task #{{param.taskNumber}}</strong>#}
-{#                <br><strong class="text-gray-dark">{{param.taskTitle}}</strong>#}
-{#                <br><small> {{ param.time|date("d/m/Y") }} </small>#}
-{#            <br>Assigned to: {{ first_name }} {{ last_name }}#}
-{#        </span>#}
         <span class="d-block" style="padding-left:1em">
             <br>{{ param }}
         </span>
     </p>
 </div>
 {% endblock %}
-
-{#{% block body %}#}
-{#    {% if error %}#}
-{#        <div class="alert alert-danger">#}
-{#            {{ error.messageKey|trans(error.messageData, 'security') }}#}
-{#        </div>#}
-{#    {% endif %}#}
-{#    <form action="{{ path('security_login') }}" method="post">#}
-{#        <div>#}
-{#            <div class="form-group">#}
-{#                <label class="form-control-label required" for="username">Username</label>#}
-{#                <input type="text" id="username" name="_username" required="required" class="form-control"#}
-{#                       value="{{ last_username }}">#}
-{#            </div>#}
-{#            <div class="form-group">#}
-{#                <label class="form-control-label required" for="password">Password</label>#}
-{#                <input type="password" id="password" name="_password" required="required" class="form-control">#}
-{#            </div>#}
-{#            <div class="form-group">#}
-{#                <button type="submit" id="Login" name="Login" class="btn-secondary btn">Login</button>#}
-{#            </div>#}
-{#            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">#}
-{#            <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}">#}
-{#        </div>#}
-{#    </form>#}
-{#{% endblock %}#}

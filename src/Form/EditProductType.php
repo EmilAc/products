@@ -9,28 +9,22 @@ use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface as ObjectManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
 class EditProductType extends AbstractType
 {
     /** @var string $dropDownEntities */
-    private static $entities = 'Category';
+    private static $entitiesCategory = 'Category';
 
     /** @var string $dropDownEntities */
-    private static $entities2 = 'Department';
+    private static $entitiesDepartment = 'Department';
 
     /** @var string $dropDownEntities */
-    private static $entities3 = 'Manufacturer';
+    private static $entitiesManufacturer = 'Manufacturer';
 
     /** @var ObjectManager $em */
     private $em;
@@ -62,7 +56,6 @@ class EditProductType extends AbstractType
                 'choices' => $this->formCollection['Category'],
                 'choice_label' => 'categoryName',
                 'required' => true,
-//                'label' => 'Chose Category ',
                 'expanded' => false,
                 'multiple' => false,
                 'placeholder' => 'Select Category'
@@ -72,7 +65,6 @@ class EditProductType extends AbstractType
                 'choices' => $this->formCollection['Department'],
                 'choice_label' => 'departmentName',
                 'required' => true,
-//                'label' => 'Chose Department ',
                 'expanded' => false,
                 'multiple' => false,
                 'placeholder' => 'Select Department'
@@ -82,7 +74,6 @@ class EditProductType extends AbstractType
                 'choices' => $this->formCollection['Manufacturer'],
                 'choice_label' => 'manufacturerName',
                 'required' => true,
-//                'label' => 'Chose Manufacturer ',
                 'expanded' => false,
                 'multiple' => false,
                 'placeholder' => 'Select Manufacturer'
@@ -125,8 +116,8 @@ class EditProductType extends AbstractType
      */
     private function setFormCollection(): void
     {
-        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entities)));
-        $this->formCollection[ucfirst(strtolower(self::$entities))] = $repo->getCollection()->getQuery()->getResult();
+        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entitiesCategory)));
+        $this->formCollection[ucfirst(strtolower(self::$entitiesCategory))] = $repo->getCollection()->getQuery()->getResult();
     }
 
     /**
@@ -134,8 +125,8 @@ class EditProductType extends AbstractType
      */
     private function setFormCollection2(): void
     {
-        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entities2)));
-        $this->formCollection[ucfirst(strtolower(self::$entities2))] = $repo->getCollection()->getQuery()->getResult();
+        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entitiesDepartment)));
+        $this->formCollection[ucfirst(strtolower(self::$entitiesDepartment))] = $repo->getCollection()->getQuery()->getResult();
     }
 
     /**
@@ -143,7 +134,7 @@ class EditProductType extends AbstractType
      */
     private function setFormCollection3(): void
     {
-        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entities3)));
-        $this->formCollection[ucfirst(strtolower(self::$entities3))] = $repo->getCollection()->getQuery()->getResult();
+        $repo = $this->em->getRepository('App:' . ucfirst(strtolower(self::$entitiesManufacturer)));
+        $this->formCollection[ucfirst(strtolower(self::$entitiesManufacturer))] = $repo->getCollection()->getQuery()->getResult();
     }
 }

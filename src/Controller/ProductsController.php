@@ -113,10 +113,6 @@ class ProductsController extends AbstractController
                 'param' => $message
             ]);
         }
-//        echo 'Oh noo';
-//        return $this->render('index.html.twig', [
-//            'params' => $data
-//        ]);
         return new redirectResponse($this->router->generate("products"));
     }
 
@@ -128,17 +124,12 @@ class ProductsController extends AbstractController
         return $this->render('products/products.html.twig',
             ['params' => $this->productRepository->findBy([], ['id' => 'ASC'])
             ]);
-
-//        $html = $this->twig->render('products.html.twig', [
-//            'params' => $this->productRepository->findBy(['id' => 'DESC'])
-//        ]);
-//        return new Response($html);
     }
 
     /**
      * @Route("/product/{id}", name="product")
      */
-    public function product(ProductRepository $productRepository, Product $productNumber): Response
+    public function product(Product $productNumber): Response
     {
         $categoryId = $productNumber->{'category'}->{'id'};
         $departmentId = $productNumber->{'department'}->{'id'};
@@ -149,7 +140,6 @@ class ProductsController extends AbstractController
         $departmentName = $department[0]->{'department_name'};
         $manufacturer = $this->manufacturerRepository->findBy(['id' => $manufacturerId]);
         $manufacturerName = $manufacturer[0]->{'manufacturer_name'};
-//        var_dump($departmentName);die;
 
         $html = $this->twig->render('products/product.html.twig', [
             'param' => $productNumber,
@@ -166,7 +156,7 @@ class ProductsController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function productEdit(Product $product, Request $request)
+    public function productEdit(Product $product, Request $request): Response
     {
         $form = $this->formFactory->create(EditProductType::class, $product);
         $form->handleRequest($request);
@@ -188,7 +178,7 @@ class ProductsController extends AbstractController
     /**
      * @Route("/product-delete/{id}", name="product-delete")
      * @param Product $product
-     * @return Response
+     * @return RedirectResponse
      */
     public function productDelete(Product $product): RedirectResponse
     {
@@ -204,7 +194,7 @@ class ProductsController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function productsByCategory(Request $request)
+    public function productsByCategory(Request $request): Response
     {
         $category = new Category();
         $form = $this->formFactory->create(ProductsByCategoryType::class, $category);
@@ -218,6 +208,7 @@ class ProductsController extends AbstractController
                 ['params' => $this->productRepository->findBy(['category_id' => $categoryId], ['id' => 'ASC'])
                 ]);
         }
+
         return $this->render('products/category-form.html.twig', [
             'form' => $form->createView()
         ]);
