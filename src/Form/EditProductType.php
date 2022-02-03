@@ -106,7 +106,8 @@ class EditProductType extends AbstractType
             ->add('description', TextareaType::class, [
                 'invalid_message' => 'The description text is not valid',
                 'required' => true,
-                'label' => 'Description'
+                'label' => 'Description',
+                'attr' => array('rows' => '5'),
             ])
             ->add('Edit', SubmitType::class)
         ;
