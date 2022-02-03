@@ -17,13 +17,13 @@ class Department
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Assert\NotBlank()
      */
-    private $department_name;
+    public $department_name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="department")
@@ -36,6 +36,11 @@ class Department
     public function __construct()
     {
         $this->products = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     /**
@@ -68,10 +73,5 @@ class Department
     public function setProducts(ArrayCollection $products): void
     {
         $this->products = $products;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 }

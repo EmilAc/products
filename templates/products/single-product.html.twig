@@ -1,0 +1,19 @@
+<div class="media text-muted pt-3">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <span class="d-block">
+                <strong class="text-gray-dark">Product # {{param.productNumber}}</strong>
+                <br><strong class="text-gray-dark">Category - {{category_name}}</strong>
+                <br><strong class="text-gray-dark">Department - {{ department_name }}</strong>
+                <br><strong class="text-gray-dark">Manufacturer - {{manufacturer_name}}</strong>
+                <br><strong class="text-gray-dark">UPC - {{param.upc}}</strong>
+                <br><strong class="text-gray-dark">SKU - {{param.sku}}</strong>
+                <br><strong class="text-gray-dark">Regular Price - {{param.regularPrice}}</strong>
+                <br><strong class="text-gray-dark">Sale Price - {{param.salePrice}}</strong>
+{#                <br><small> {{ param.time|date("d/m/Y") }} </small>#}
+{#            <br>Assigned to: {{ first_name }} {{ last_name }}#}
+        </span>
+        <span class="d-block" style="padding-left:1em">
+            <br>{{ param.description}}
+        </span>
+    </p>
+</div>

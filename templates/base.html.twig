@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}To Do App{% endblock %}</title>
+        <title>{% block title %}Products{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('css/app') }}
         {% endblock %}
@@ -13,59 +13,62 @@
             {{ message }}
         </div>
     {% endfor %}
-        {% if is_granted('ROLE_USER') %}
+{#        {% if is_granted('ROLE_USER') %}#}
             <nav class="navbar navbar-dark navbar-expand-md sticky-top bg-dark p-0">
                 <div class="w-100 order-1 order-md-0">
                     <ul class="navbar-nav px-3">
-                        {% if is_granted('ROLE_USER') %}
+{#                        {% if is_granted('ROLE_USER') %}#}
                             <li class="nav-item text-nowrap">
-                                <a class="nav-link"  href="{{ path('task_index') }}">Public Tasks</a>
+                                <a class="nav-link"  href="{{ path('index') }}">Products</a>
                             </li>
                             <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('private_tasks') }}">Private Tasks</a>
+                                <a class="nav-link" href="{{ path('products-by-category') }}">Products by category</a>
                             </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('public_lists') }}">Public Lists</a>
-                            </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('private_lists') }}">Private Lists</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item text-nowrap">
+                            <a class="nav-link" href="{{ path('categories-check') }}">Categories</a>
+                        </li>
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('index') }}">Public Lists</a>#}
+{#                            </li>#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('index') }}">Private Lists</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
                     </ul>
                 </div>
-                <div class="order-2 order-md-1">
-                    <ul class="navbar-nav px-3">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('user_register') }}">Add new user</a>
-                            </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('edit_user') }}">Edit user</a>
-                            </li>
-                        {% endif %}
-                        {% if is_granted('ROLE_USER') %}
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('new_task') }}">Add new task</a>
-                            </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('new_list') }}">Add new list</a>
-                            </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link"
-                                   href="{{ path('edit_password') }}">{{ app.user.firstName }} {{ app.user.lastName }}</a>
-                            </li>
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('security_logout') }}">Sign out</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item text-nowrap">
-                                <a class="nav-link" href="{{ path('security_login') }}">Sign in</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
+{#                <div class="order-2 order-md-1">#}
+{#                    <ul class="navbar-nav px-3">#}
+{#                        {% if is_granted('ROLE_ADMIN') %}#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('user_register') }}">Add new user</a>#}
+{#                            </li>#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('edit_user') }}">Edit user</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{#                        {% if is_granted('ROLE_USER') %}#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('new_task') }}">Add new task</a>#}
+{#                            </li>#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('new_list') }}">Add new list</a>#}
+{#                            </li>#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link"#}
+{#                                   href="{{ path('edit_password') }}">{{ app.user.firstName }} {{ app.user.lastName }}</a>#}
+{#                            </li>#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('security_logout') }}">Sign out</a>#}
+{#                            </li>#}
+{#                        {% else %}#}
+{#                            <li class="nav-item text-nowrap">#}
+{#                                <a class="nav-link" href="{{ path('security_login') }}">Sign in</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
+{#                </div>#}
             </nav>
-        {% endif %}
+{#        {% endif %}#}
         <main role="main" class="container">
             <div class="my-3 p-3 bg-white rounded box-shadow">
                 {% block body %}

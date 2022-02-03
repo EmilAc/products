@@ -17,13 +17,13 @@ class Category
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Assert\NotBlank()
      */
-    private $category_name;
+    public $category_name;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category")

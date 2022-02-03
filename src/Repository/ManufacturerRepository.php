@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Manufacturer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,12 @@ class ManufacturerRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return QueryBuilder
+     */
+    public function getCollection(): QueryBuilder
+    {
+        return $this->createQueryBuilder('entity');
+    }
 }

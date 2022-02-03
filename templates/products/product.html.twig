@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ include('products/single-product.html.twig', { 'param': param, 'category_name': category_name, 'department_name': department_name, 'manufacturer_name': manufacturer_name }) }}
+{% endblock %}

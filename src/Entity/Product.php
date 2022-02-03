@@ -25,17 +25,17 @@ class Product
     /**
      * @ORM\Column(type="integer")
      */
-    private $category_name;
+    private $category_id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $department_name;
+    private $department_id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $manufacturer_name;
+    private $manufacturer_id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -63,19 +63,19 @@ class Product
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     public $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="products", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     public $department;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Manufacturer", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Manufacturer", inversedBy="products", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     public $manufacturer;
@@ -97,38 +97,38 @@ class Product
         return $this;
     }
 
-    public function getCategoryName(): ?int
+    public function getCategoryId(): ?int
     {
-        return $this->category_name;
+        return $this->category_id;
     }
 
-    public function setCategoryName(int $category_name): self
+    public function setCategoryId(int $category_id): self
     {
-        $this->category_name = $category_name;
+        $this->category_id = $category_id;
 
         return $this;
     }
 
-    public function getDepartmentName(): ?int
+    public function getDepartmentId(): ?int
     {
-        return $this->department_name;
+        return $this->department_id;
     }
 
-    public function setDepartmentName(int $department_name): self
+    public function setDepartmentId(int $department_id): self
     {
-        $this->department_name = $department_name;
+        $this->department_id = $department_id;
 
         return $this;
     }
 
-    public function getManufacturerName(): ?int
+    public function getManufacturerId(): ?int
     {
-        return $this->manufacturer_name;
+        return $this->manufacturer_id;
     }
 
-    public function setManufacturerName(int $manufacturer_name): self
+    public function setManufacturerId(int $manufacturer_id): self
     {
-        $this->manufacturer_name = $manufacturer_name;
+        $this->manufacturer_id = $manufacturer_id;
 
         return $this;
     }
